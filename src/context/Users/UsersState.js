@@ -10,7 +10,10 @@ const UsersState = (props) => {
         currentUser: {
             name: '',
             lastname: '',
-            email: ''
+            email: '',
+            field: '',
+            position: '',
+            profile: false
         },
         authStatus: false
     }
@@ -56,7 +59,12 @@ const UsersState = (props) => {
 
         const res = await axiosClient.post('/api/users/login', form);
 
-        console.log(res);
+        const token = res.data.data
+
+        dispatch({
+            type: 'LOGIN_EXITOSO',
+            payload: token
+        })
 
     }
 

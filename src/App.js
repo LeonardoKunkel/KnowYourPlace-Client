@@ -10,6 +10,10 @@ import NotFound from './pages/NotFound';
 import Navbar from './components/Layout/Navbar';
 import Register from './components/Auth/Register';
 import UsersState from './context/Users/UsersState';
+import Auth from './routes/Auth';
+import Private from './routes/Private';
+import Layout from './components/Layout/Layout'
+import Profile from './pages/Profile';
 
 
 function App() {
@@ -21,11 +25,33 @@ function App() {
           <Navbar />
 
           <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
+            <Route
+              path='/login'
+              element={
+                <Auth component={Login}/>
+              }
+            />
+            <Route path='/' element={<Layout />}>
+
+              <Route
+                index
+                element={
+                  <Private component={Home} />
+                }
+              />
+
+            </Route>
+
+            <Route
+              path='register'
+              element={
+                <Auth component={Register}/>
+              }
+            />
+
             <Route path='/users' element={<Users />} />
             <Route path='/about' element={<About />} />
+            <Route path='/profile' element={<Profile />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
 

@@ -11,7 +11,6 @@ const reducer = (globalState, action) => {
                 ...globalState,
                 authStatus: true
             }
-            break;
 
         case 'CERRAR_SESION':
 
@@ -23,7 +22,9 @@ const reducer = (globalState, action) => {
                 currentUser: {
                     name: '',
                     lastname: '',
-                    email: ''
+                    email: '',
+                    field: '',
+                    position: ''
                 }
             }
         default:
