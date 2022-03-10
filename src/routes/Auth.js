@@ -10,6 +10,10 @@ export default function Auth({ component: Component }) {
 
     const { authStatus, verifyToken } = ctxUser;
 
+    useEffect(() => {
+        verifyToken()
+    }, [authStatus])
+
     return (
         <div>
             {
@@ -19,7 +23,7 @@ export default function Auth({ component: Component }) {
                 (<Navigate replace to ='/' />)
                 :
                 // Si el usuario no está loggeado, mándalo al componente que trae la ruta
-                // O sea, Register
+                // O sea, Login
                 (<Component />)
             }
         </div>

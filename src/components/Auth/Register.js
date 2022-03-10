@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react'
 import UsersContext from '../../context/Users/UsersContext'
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
 
@@ -20,6 +21,8 @@ export default function Register() {
 
     console.log(registerUser);
 
+    let navigate = useNavigate()
+
     const handleChange = (event) => {
         setData({
             ...data,
@@ -31,6 +34,8 @@ export default function Register() {
         event.preventDefault()
 
         registerUser(data)
+
+        navigate('../users', {replace: true});
     }
 
     return (

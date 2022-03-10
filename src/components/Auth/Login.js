@@ -1,7 +1,6 @@
 import { useState, useContext } from 'react';
 
 import UsersContext from '../../context/Users/UsersContext';
-import Navbar from '../Layout/Navbar';
 
 
 export default function Login() {
@@ -36,7 +35,6 @@ export default function Login() {
 
     return (
         <>
-            <Navbar transparent />
                 <main>
                     <section className="absolute w-full h-full">
                     <div

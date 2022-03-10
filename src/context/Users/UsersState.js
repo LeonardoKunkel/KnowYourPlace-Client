@@ -15,10 +15,25 @@ const UsersState = (props) => {
             position: '',
             profile: false
         },
-        authStatus: false
+        authStatus: false,
+        usrs: []
     }
 
     const [globalState, dispatch] = useReducer(UsersReducer, initialState)
+
+    const loginUser = async (form) => {
+
+        const res = await axiosClient.post('/api/users/login', form);
+
+        const token = res.data.data
+
+        dispatch({
+            type: 'LOGIN_EXITOSO',
+            payload: token
+        })
+        console.log(globalState.currentUser);
+
+    }
 
     const registerUser = async (form) => {
 
@@ -34,6 +49,21 @@ const UsersState = (props) => {
 
     }
 
+    const getUsers = async () => {
+
+        const res = await axiosClient.get('/api/users');
+        console.log(res);
+        const arrUsers = res.data.data;
+
+        dispatch({
+            type: 'GET_USERS',
+            payload: arrUsers
+        })
+
+        console.log(globalState);
+
+    }
+
     const verifyToken = async () => {
 
         const token = localStorage.getItem('token')
@@ -46,24 +76,13 @@ const UsersState = (props) => {
 
         const res = await axiosClient.get('/api/users/verifytoken')
 
+        // console.log(res);
+
         const userData = res.data.data;
 
         dispatch({
             type: 'VERIFICAR_TOKEN',
             payload: userData
-        })
-
-    }
-
-    const loginUser = async (form) => {
-
-        const res = await axiosClient.post('/api/users/login', form);
-
-        const token = res.data.data
-
-        dispatch({
-            type: 'LOGIN_EXITOSO',
-            payload: token
         })
 
     }
@@ -81,8 +100,10 @@ const UsersState = (props) => {
             value={{
                 authStatus: globalState.authStatus,
                 currentUser: globalState.currentUser,
+                usrs: globalState.usrs,
                 registerUser,
                 verifyToken,
+                getUsers,
                 loginUser,
                 logoutUser
             }}
