@@ -1,8 +1,7 @@
 import { useSate, useContext, useEffect } from 'react'
 
-import { Navigate } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import UsersContext from '../context/Users/UsersContext';
-
 
 export default function Auth({ component: Component }) {
 
@@ -10,9 +9,14 @@ export default function Auth({ component: Component }) {
 
     const { authStatus, verifyToken } = ctxUser;
 
+    // const {id} = useParams()
+    // console.log(id)
+
     useEffect(() => {
         verifyToken()
     }, [authStatus])
+
+    console.log(authStatus);
 
     return (
         <div>
@@ -23,7 +27,6 @@ export default function Auth({ component: Component }) {
                 (<Navigate replace to ='/' />)
                 :
                 // Si el usuario no está loggeado, mándalo al componente que trae la ruta
-                // O sea, Login
                 (<Component />)
             }
         </div>

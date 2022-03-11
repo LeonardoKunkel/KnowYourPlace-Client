@@ -47,10 +47,14 @@ export default function Login() {
                         }}
                     >
                     </div>
+                    
                     <div className="container mx-auto px-4 h-full">
                         <div className="flex content-center items-center justify-center h-full">
                             <div className="w-full lg:w-4/12 px-4">
                                 <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300 border-0">
+                                    <div>
+                                        <img className="mx-auto mt-5 h-11 w-auto flex items-center justify-center" src="https://cdn-icons-png.flaticon.com/512/5968/5968853.png" alt="" />
+                                    </div>
                                     <div className="rounded-t mb-0 px-6 py-6">
                                     </div>
                                     <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
@@ -110,30 +114,9 @@ export default function Login() {
                                         </form>
                                     </div>
                                 </div>
-                                <div className="flex flex-wrap mt-6">
-                                    <div className="w-1/2">
-                                        <a
-                                            href="#pablo"
-                                            onClick={e => e.preventDefault()}
-                                            className="text-gray-300"
-                                        >
-                                            <small>Forgot password?</small>
-                                        </a>
-                                    </div>
-                                    <div className="w-1/2 text-right">
-                                        <a
-                                            href="#pablo"
-                                            onClick={e => e.preventDefault()}
-                                            className="text-gray-300"
-                                        >
-                                            <small>Create new account</small>
-                                        </a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
-                    {/* <FooterSmall absolute /> */}
                 </section>
             </main>
         </>

@@ -1,6 +1,32 @@
+import { useSate, useContext, useEffect } from 'react'
+
+import { Navigate, useParams } from 'react-router-dom';
+import UsersContext from '../context/Users/UsersContext';
 
 export default function Private({ component: Component }) {
+
+    const ctxUser = useContext(UsersContext)
+
+    const { authStatus, verifyToken, currentUser } = ctxUser;
+
+    const { id } = useParams()
+    // console.log(id);
+
+    useEffect(() => {
+        verifyToken()
+    }, [authStatus])
+
     return (
-        <div>Private</div>
+        <div>
+            {
+                authStatus ?
+                // Si el usuario ya está loggeado, mándalo al home
+                // Con el token determinamos si el usuario está loggeado
+                (<Component />)
+                :
+                // Si el usuario no está loggeado, mándalo al componente que trae la ruta
+                (<Navigate replace to ='/' />)
+            }
+        </div>
     )
 }

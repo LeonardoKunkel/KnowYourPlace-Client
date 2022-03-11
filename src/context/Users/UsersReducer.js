@@ -30,7 +30,9 @@ const reducer = (globalState, action) => {
                     lastname: '',
                     email: '',
                     field: '',
-                    position: ''
+                    position: '',
+                    profile: false,
+                    reservations: []
                 }
             }
 

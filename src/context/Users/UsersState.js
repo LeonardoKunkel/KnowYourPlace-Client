@@ -13,7 +13,8 @@ const UsersState = (props) => {
             email: '',
             field: '',
             position: '',
-            profile: false
+            profile: false,
+            reservations: []
         },
         authStatus: false,
         usrs: []
@@ -24,14 +25,13 @@ const UsersState = (props) => {
     const loginUser = async (form) => {
 
         const res = await axiosClient.post('/api/users/login', form);
-
+        console.log(res);
         const token = res.data.data
 
         dispatch({
             type: 'LOGIN_EXITOSO',
             payload: token
         })
-        console.log(globalState.currentUser);
 
     }
 
@@ -60,7 +60,7 @@ const UsersState = (props) => {
             payload: arrUsers
         })
 
-        console.log(globalState);
+        // console.log(globalState);
 
     }
 
@@ -76,9 +76,9 @@ const UsersState = (props) => {
 
         const res = await axiosClient.get('/api/users/verifytoken')
 
-        // console.log(res);
-
+        console.log(res);
         const userData = res.data.data;
+        console.log(userData);
 
         dispatch({
             type: 'VERIFICAR_TOKEN',
