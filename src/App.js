@@ -52,7 +52,7 @@ function App() {
                   }
                 />*/}
 
-                <Route path='/' element={<Register />} />
+                <Route path='/register' element={<Register />} />
 
                 <Route
                   path='users'
