@@ -45,12 +45,14 @@ function App() {
                   }
                 />
 
-                <Route
+                {/*<Route
                   path='register'
                   element={
                     <Private component={Register} />
                   }
-                />
+                />*/}
+
+                <Route path='/' element={<Register />} />
 
                 <Route
                   path='users'
